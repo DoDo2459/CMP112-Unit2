@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    //variable creation
     private Rigidbody rb;
     private Vector3 movement;
     public float speed;
@@ -9,7 +10,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
@@ -25,14 +25,5 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             rb.AddForce(movement.normalized * speed);
         }
-       
-
-        
-
-    }
-        // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

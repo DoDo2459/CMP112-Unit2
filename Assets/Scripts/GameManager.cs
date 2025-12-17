@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //variable creation
     public GameObject pauseMenu;
     public PhysicsMaterial pushMaterial;
     public GameObject Cube;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+       
         if (Cube != null && Sphere != null)
         {
             colliderCube = Cube.GetComponent<CapsuleCollider>();
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     void PlayerSwitch()
     {
+        //switches player and telports it back to spawn when button is pressed, the spawn is free and a cube and sphere is connected
         if (Input.GetButtonDown("Switch") && spawnFree && Cube != null && Sphere != null)
         {
             //cube switching
@@ -67,27 +70,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void PauseMenuOn()
-    {
-        if(Input.GetButtonDown("Pause") && escapeStatus == true && Finished == false && pauseMenu != null)
-        {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0;
-            escapeStatus = false;
-        }
-        else if (Input.GetButtonDown("Pause") && escapeStatus == false && pauseMenu != null)
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1;
-            escapeStatus = true;
-        }
-    }
-
-    public void PauseMenuOff()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-    }
+    //keeps up to date if spawn is free or not
     void OnTriggerEnter(Collider other)
     {
         spawnFree = false;
@@ -98,15 +81,43 @@ public class GameManager : MonoBehaviour
         spawnFree = true;
     }
 
+    void PauseMenuOn()
+    {
+        //enables pause menu
+        if(Input.GetButtonDown("Pause") && escapeStatus == true && Finished == false && pauseMenu != null)
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            escapeStatus = false;
+        }
+        //disable pause menu
+        else if (Input.GetButtonDown("Pause") && escapeStatus == false && pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            escapeStatus = true;
+        }
+    }
+
+    //disable pause menu
+    public void PauseMenuOff()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+    
+    //restarts current level
     public void restartgame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
 
+    //loads selected scene
     public void loadscene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 }
+//timescale is used to pause game 0 = pause and 1 = unpause
 

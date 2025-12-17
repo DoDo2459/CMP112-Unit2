@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RaycastLaser : MonoBehaviour
 {
+    //variable creation
     [SerializeField] public Transform laserstart;
     [SerializeField] public float RayDistance;
     [SerializeField] private LineRenderer Laser;
@@ -27,28 +28,27 @@ public class RaycastLaser : MonoBehaviour
 
         if (laserOn == true)
         {
-            
+            //setup raycast
             Ray ray = new Ray(laserstart.transform.position, -transform.forward);
             triggerRay = Physics.Raycast(ray, out hitInfo, RayDistance);
             hitpoint = hitInfo.point;
-
+            //make raycast visable
             Laser.enabled = true;
             Laser.SetPosition(0, laserstart.transform.position);
             Laser.SetPosition(1, hitpoint);
 
             if (triggerRay)
             {
+                //shuts door when raycast hits correct object with tag
                 if (hitInfo.transform.tag == "RaycastDetect")
                 {
                     if (doorState == true)
                     {
-                        Debug.Log("hit");
                         door.transform.Translate(Vector3.up * 1.211794f, Space.Self);
                         doorState = false;
                     }
-
-
                 }
+                //otherwise opens door
                 else
                 {
                     if (doorState == false)
@@ -60,6 +60,7 @@ public class RaycastLaser : MonoBehaviour
             }
         }
         else
+        //makes sure connected door is open when off
         {
             if (doorState == false)
             {
