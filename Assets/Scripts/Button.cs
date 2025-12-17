@@ -6,6 +6,7 @@ public class Button : MonoBehaviour
     public float volume;
     public AudioClip[] press;
     public AudioClip[] release;
+    public RaycastLaser Laser;
     private MeshRenderer buttonMaterial;
     private AudioSource source;
     private int random;
@@ -16,8 +17,12 @@ public class Button : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        if (Laser != null)
+        {
+            Laser.laserOn = true;
+        }
         if (door != null)
         {
             buttonMaterial.material.color = Color.red;
@@ -31,8 +36,12 @@ public class Button : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
+        if (Laser != null)
+        {
+            Laser.laserOn = false;
+        }
         if (door != null)
         {
             buttonMaterial.material.color = Color.green;

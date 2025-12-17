@@ -1,9 +1,11 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject pauseMenu;
+    public GameObject continueMenu;
     public PhysicsMaterial pushMaterial;
     public GameObject Cube;
     public GameObject Sphere;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         PlayerSwitch();
+        PauseMenuOn();
     }
 
     void PlayerSwitch()
@@ -58,12 +61,25 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    void PauseMenuOn()
+    {
+        if(Input.GetButtonDown("Pause"))
+        {
+            pauseMenu.SetActive(true);  
+        }
+    }
+
+    public void PauseMenuOff()
+    {
+        pauseMenu.SetActive(false); 
+    }
     void OnTriggerEnter(Collider other)
     {
         spawnFree = false;
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         spawnFree = true;
     }
@@ -71,6 +87,11 @@ public class GameManager : MonoBehaviour
     public void restartgame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void loadscene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
 

@@ -1048,6 +1048,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 400116518}
   m_SourcePrefab: {fileID: 100100000, guid: e7c6a8b3e58ecd246a9b9c2edbab8bee, type: 3}
+--- !u!120 &1225625535 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 2124629670126202683, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
+  m_PrefabInstance: {fileID: 6421119292713968968}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1225625536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2700423831152464168, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
+  m_PrefabInstance: {fileID: 6421119292713968968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1400504096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1745,22 +1755,26 @@ PrefabInstance:
     - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1847700520}
     - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
       propertyPath: Laser
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1225625535}
     - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
       propertyPath: onRay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
-      propertyPath: laserstart
-      value: 
+      propertyPath: laserOn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
+      propertyPath: laserstart
+      value: 
+      objectReference: {fileID: 1225625536}
+    - target: {fileID: 7777304995367974938, guid: f801c9652bd154f4e916ebeabe54225d, type: 3}
       propertyPath: RayDistance
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1823,6 +1837,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 910065935}
+    - target: {fileID: 7436315198425204439, guid: 2aff2115f50301d48ba26547acca829a, type: 3}
+      propertyPath: Laser
+      value: 
+      objectReference: {fileID: 479500782}
     - target: {fileID: 7436315198425204439, guid: 2aff2115f50301d48ba26547acca829a, type: 3}
       propertyPath: laser
       value: 
