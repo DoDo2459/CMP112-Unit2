@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject continueMenu;
     public PhysicsMaterial pushMaterial;
     public GameObject Cube;
     public GameObject Sphere;
+    public bool Finished;
+    private bool escapeStatus = true;
     private Collider colliderCube;
     private Collider colliderSphere;
     private Rigidbody rbSphere;
@@ -64,15 +65,24 @@ public class GameManager : MonoBehaviour
 
     void PauseMenuOn()
     {
-        if(Input.GetButtonDown("Pause"))
+        if(Input.GetButtonDown("Pause") && escapeStatus == true && Finished == false)
         {
-            pauseMenu.SetActive(true);  
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            escapeStatus = false;
+        }
+        else if (Input.GetButtonDown("Pause") && escapeStatus == false)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            escapeStatus = true;
         }
     }
 
     public void PauseMenuOff()
     {
-        pauseMenu.SetActive(false); 
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
     void OnTriggerEnter(Collider other)
     {

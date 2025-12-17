@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 142743648898697526}
   - component: {fileID: 3798074939517747182}
   m_Layer: 0
-  m_Name: Finnish
+  m_Name: Finish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

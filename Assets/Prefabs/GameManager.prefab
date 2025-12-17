@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82796edb6418a7f4e94c35e387e234a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  continueMenu: {fileID: 0}
   pushMaterial: {fileID: 13400000, guid: 90fe8d69b74414247a776d21145992c1, type: 2}
   Cube: {fileID: 0}
   Sphere: {fileID: 0}
@@ -61,7 +63,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b8526db9c7d427b44ac314e34de2b9f0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
