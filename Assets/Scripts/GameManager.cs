@@ -118,6 +118,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    //allows you to quit game easily
+    public void quitgame()
+    {
+        Application.Quit();
+    }
 }
 //timescale is used to pause game 0 = pause and 1 = unpause
 
