@@ -19,9 +19,13 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colliderCube = Cube.GetComponent<CapsuleCollider>();
-        colliderSphere = Sphere.GetComponent<Collider>();
-        rbSphere = Sphere.GetComponent <Rigidbody>();
+        Time.timeScale = 1;
+        if (Cube != null && Sphere != null)
+        {
+            colliderCube = Cube.GetComponent<CapsuleCollider>();
+            colliderSphere = Sphere.GetComponent<Collider>();
+            rbSphere = Sphere.GetComponent<Rigidbody>();  
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     void PlayerSwitch()
     {
-        if (Input.GetButtonDown("Switch") && spawnFree)
+        if (Input.GetButtonDown("Switch") && spawnFree && Cube != null && Sphere != null)
         {
             //cube switching
             if (Cube.CompareTag("Player"))
@@ -65,13 +69,13 @@ public class GameManager : MonoBehaviour
 
     void PauseMenuOn()
     {
-        if(Input.GetButtonDown("Pause") && escapeStatus == true && Finished == false)
+        if(Input.GetButtonDown("Pause") && escapeStatus == true && Finished == false && pauseMenu != null)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             escapeStatus = false;
         }
-        else if (Input.GetButtonDown("Pause") && escapeStatus == false)
+        else if (Input.GetButtonDown("Pause") && escapeStatus == false && pauseMenu != null)
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
     public void restartgame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void loadscene(string sceneName)

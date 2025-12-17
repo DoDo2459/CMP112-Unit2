@@ -7,8 +7,12 @@ public class LevelFinish : MonoBehaviour
     public GameManager manager;
     private void OnTriggerEnter(Collider other)
     {
-        winMenu.SetActive(true);
-        Time.timeScale = 0;
-        manager.Finished=true;
+        if(other.CompareTag("Player"))
+        {
+            winMenu.SetActive(true);
+            Time.timeScale = 0;
+            manager.Finished = true;
+        }
+        
     }
 }
