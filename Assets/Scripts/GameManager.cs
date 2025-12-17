@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     private Collider colliderCube;
     private Collider colliderSphere;
     private Rigidbody rbSphere;
+    private bool spawnFree = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     void PlayerSwitch()
     {
-        if (Input.GetButtonDown("Switch"))
+        if (Input.GetButtonDown("Switch") && spawnFree)
         {
             //cube switching
             if (Cube.CompareTag("Player"))
@@ -56,4 +58,19 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        spawnFree = false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        spawnFree = true;
+    }
+
+    public void restartgame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
+
